@@ -1,5 +1,8 @@
 cd backend
 npm install
+
+en otra terminal ejecutar:
+
 cd frotend
 npm install
 
