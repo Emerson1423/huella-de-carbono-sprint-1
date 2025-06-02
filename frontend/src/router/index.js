@@ -1,10 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Huella from '../views/Huella.vue';      // Ruta del formulario
+import InicioView from '@/views/InicioView.vue';
 
 
 const routes = [
+  { 
+    path:'/',
+    name:'Inicio',
+    component:InicioView,
+
+
+  },
   {
-    path: '/',
+    path: '/huella',
     name: 'Huella',
     component: Huella,
     meta: { requiresAuth: false } // Explícitamente público

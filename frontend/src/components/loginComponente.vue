@@ -1,24 +1,36 @@
 <template>
-  <div class="login-page">
+ 
+   
+   <div class="login-page">  
+  <div class="caja">
   <form @submit.prevent="handleSubmit" class="login-form">
+    <h1>Bienvenido de nuevo</h1>
+
+    <div class="campo">
     <input 
       v-model="usuario" 
       placeholder="Usuario" 
       required
+      class="input"
     >
+    </div>
+    <div class="campo">
     <input 
       v-model="contraseña" 
       type="password" 
       placeholder="Contraseña" 
       required
+      class="input"
     >
+    
+    </div>
     <button type="submit" :disabled="loading">
       {{ loading ? 'Cargando...' : 'Ingresar' }}
     </button>
     <p v-if="error" class="error">{{ error }}</p>
   </form>
-
-  </div>
+    </div>
+  </div> 
 </template>
 
 <script>
@@ -61,7 +73,7 @@ export default {
         localStorage.setItem('user', JSON.stringify(response.data.user));
 
         // Redirigir a la página principal después de login
-        this.$router.push('/resultados');
+        this.$router.push('/huella');
         
       } catch (err) {
         console.error('Error en login:', err);
@@ -80,7 +92,7 @@ export default {
 <style scoped>
 
 .login-page {
-  position: fixed; /* Cubre toda la pantalla */
+  position: fixed; 
   top: 0;
   left: 0;
   right: 0;
@@ -92,27 +104,27 @@ export default {
   align-items: center;
 }
 
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Poppins, sans-serif;
+}
+h1 {
+  text-align: center;
+  color: #333;
+}
 .caja{
     background-color: #ffff;
     padding: 30px;
     border-radius: 10px;
     margin-top: 50px;
     
-
-
     
 }
-.formulario {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Poppins, sans-serif;
-}
 
-h1 {
-  text-align: center;
-  color: #333;
-}
+
+
 
 .campo {
   margin: 15px 0;
@@ -127,7 +139,6 @@ h1 {
   border: 1px solid #ddd;
   border-radius: 10px;
   border-color:#8BC34A ;
-  
   
 }
 .input:focus {
