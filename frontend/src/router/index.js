@@ -40,7 +40,18 @@ const routes = [
     name: 'registro',
     component: () => import('@/components/registroComponente.vue'),
     meta: { requiresAuth: false }
+  },
+    {
+    path: '/recuperar-contra',
+    name: 'RecuperarContra',
+    component: () => import('../views/recuperar-contra.vue')
+  },
+  {
+    path: '/restablecer-contra',
+    name: 'RestablecerContra',
+    component: () => import('../views/restablecer-contra.vue')
   }
+
 ];
 
 const router = createRouter({

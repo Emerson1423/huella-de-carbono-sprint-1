@@ -29,8 +29,11 @@
     </button>
     <p v-if="error" class="error">{{ error }}</p>
   </form>
-    </div>
+    <div class="olvido">
+        <p><a href="/recuperar-contra">¿Olvidaste tu contraseña?</a></p>
+      </div>
   </div> 
+</div>
 </template>
 
 <script>

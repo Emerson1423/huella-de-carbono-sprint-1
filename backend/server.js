@@ -2,12 +2,16 @@ const express = require('express');
 const cors = require('cors');
 const pool = require('./bd.js'); // Importamos la conexión
 const bcrypt = require('bcrypt');
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = '8116e6a30e1856625e50ead825375db00b7182bad1cfbc52c9770758d972a1e2'
 
+const resetTokens ={}; // Almacenamos tokens de restablecimiento en memoria (puedes usar una base de datos en producción)
 const app = express();
 app.use(cors());
 app.use(express.json()); // Para parsear JSON
+
 
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
@@ -227,4 +231,64 @@ app.post('/api/logout', authenticateToken, (req, res) => {
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor de huella de carbono corriendo en http://localhost:${PORT}`);
+});
+
+
+//configuracion de nodemailer para enviar correos
+const transporter = nodemailer.createTransport({
+  service: 'gmail', //servicio de correo
+  auth: {
+    user: 'equiposalvambiente@gmail.com', // correo de envio de enlace de restablecimiento
+    pass: 'zxwh tzkw scka wenc' //contraseña de aplicacion 
+  }
+});
+
+
+
+// Solicitar restablecimiento
+app.post('/api/solicitar-restablecimiento', async (req, res) => { // Endpoint para solicitar restablecimiento de contraseña
+  const { correo } = req.body;
+  try {
+    const [users] = await pool.query('SELECT * FROM usuarios WHERE correo = ?', [correo]);
+    if (users.length === 0) {
+      return res.status(404).json({ error: 'Correo no encontrado' });
+    }
+    // Generar token temporal
+    const token = crypto.randomBytes(32).toString('hex');
+    resetTokens[token] = { correo, expires: Date.now() + 1000 * 60 * 15 }; // 15 minutos
+
+  const enlace = `http://localhost:8080/restablecer-contra?token=${token}`; // Enlace para restablecer la contraseña
+
+  await transporter.sendMail({
+    from: '"Salvambiente" <equiposalvambiente@gmail.com>', //correo de envio de enlace de restablecimiento de contraseña
+    to: correo,
+    subject: 'Restablece tu contraseña',
+    html: `<p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p>
+          <a href="${enlace}">${enlace}</a>`
+  });
+
+res.json({ message: 'Se ha enviado un enlace de restablecimiento a tu correo.' }); // texto que muestra que se ha enviado el enlace de restablecimiento de contraseña
+
+  } catch (error) {
+    console.error('Error en /api/solicitar-restablecimiento:', error); // para verificar errores en la consola
+    res.status(500).json({ error: 'Error en el servidor' });
+  }
+});
+
+
+// Restablecer contraseña
+app.post('/api/restablecer-contra', async (req, res) => { // 
+  const { token, nuevaContraseña } = req.body;
+  const data = resetTokens[token];
+  if (!data || data.expires < Date.now()) {
+    return res.status(400).json({ error: 'Token inválido o expirado' });
+  }
+  try {
+    const hashedPassword = await bcrypt.hash(nuevaContraseña, 10);
+    await pool.query('UPDATE usuarios SET contraseña = ? WHERE correo = ?', [hashedPassword, data.correo]); // Actualiza la contraseña del usuario en la base de datos
+    delete resetTokens[token]; // Elimina el token de la memoria
+    res.json({ message: 'Contraseña restablecida correctamente' }); // texto que muestra que la contraseña se ha restablecido correctamente
+  } catch (error) {
+    res.status(500).json({ error: 'Error en el servidor' });
+  }
 });
