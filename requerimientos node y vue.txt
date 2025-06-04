@@ -3,6 +3,6 @@ npm install
 
 en otra terminal ejecutar:
 
-cd frotend
+cd frontend
 npm install
 
