@@ -1,4 +1,3 @@
-
 <template>
   <div class="carbon-footprint-form">
     <h1>Calcular tu huella ecológica</h1>
@@ -8,7 +7,7 @@
       <label>¿Cuántos kilómetros recorres al mes?</label>
       <input 
         type="range" 
-        min="100" 
+        min="0" 
         max="1000" 
         step="10" 
         v-model="kilometros" 
@@ -93,6 +92,10 @@
     </div>
     </div>
 
+    <div v-if="errors.reciclaje" class="error-message">
+      {{ errors.reciclaje }}
+    </div>
+
     <button @click="calcularHuella" class="calcular-btn">Calcular</button>
   </div>
 </template>
@@ -101,7 +104,7 @@
 export default {
   data() {
     return {
-      kilometros: 100,
+      kilometros: 0,
       transporte: '',
       electricidad: '',
       energiaRenovable: '',
@@ -112,12 +115,13 @@ export default {
         { id: 'vidrio', name: 'Vidrio', icon: require('@/assets/icons/vidrio.png') },
         { id: 'carton', name: 'Cartón', icon: require('@/assets/icons/carton.png') }
       ],
-       selectedRecycleItems: [], // Inicia con "No reciclo" seleccionado
+       selectedRecycleItems: [],
       errors: {
         kilometros: '',
         transporte: '',
         electricidad: '',
         energiaRenovable: '',
+         reciclaje: '',
       }
     }
   },
@@ -141,6 +145,11 @@ export default {
         } else {
           this.selectedRecycleItems.splice(itemIndex, 1);
         }
+
+        if (this.selectedRecycleItems.length > 0) {
+              this.errors.reciclaje = '';
+        }
+        
       }
     },
 
@@ -158,7 +167,7 @@ export default {
       };
 
       if (this.kilometros <= 0) {
-        this.errors.kilometros = '⚠️ Los kilómetros deben ser positivos';
+        this.errors.kilometros = '⚠️ Los kilómetros deben tener un valor mayor a 0';
         valido = false;
       }
       
@@ -174,6 +183,12 @@ export default {
       
       if (!this.energiaRenovable) {
         this.errors.energiaRenovable = '⚠️ Indica si usas energía renovable';
+        valido = false;
+      }
+
+
+      if (this.selectedRecycleItems.length === 0) {
+        this.errors.reciclaje = '⚠️ Selecciona al menos una opción de reciclaje';
         valido = false;
       }
       
