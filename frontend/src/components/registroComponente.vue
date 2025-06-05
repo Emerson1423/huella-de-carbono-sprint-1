@@ -1,26 +1,20 @@
 <template>
   <div class="register-page"> 
     <div class="caja">
-    <form @submit.prevent="handleRegister" class="register-form">
-         <h1>Registrarte</h1>
-      
+      <form @submit.prevent="handleRegister" class="register-form">
+        <h1>Registrarte</h1>
+        
         <div class="campo">
-        <input v-model="usuario" placeholder="Usuario" required
-        class="input">
+          <input v-model="usuario" placeholder="Usuario" required class="input">
         </div>
-      
-    
-      
+        
         <div class="campo">
-        <input v-model="correo" type="email" placeholder="Correo" required 
-        class="input">
+          <input v-model="correo" type="email" placeholder="Correo" required class="input">
         </div>
-      
-      
+        
         <div class="campo">
-        <input v-model="contraseña" @input="validarContra" type="password" placeholder="Contraseña" required
-        class="input">
-        <div class="password-strength" v-if="contraseña.length > 0">
+          <input v-model="contraseña" @input="validarContraseña" type="password" placeholder="Contraseña" required class="input">
+          <div class="password-strength" v-if="contraseña.length > 0">
             <div class="strength-bar" :class="strengthClass"></div>
             <ul class="requirements">
               <li :class="{ 'valid': hasMinLength }">Mínimo 8 caracteres</li>
@@ -31,18 +25,16 @@
             </ul>
           </div>
         </div>
-      
-
+        
         <div class="campo">
-        <input v-model="confirmarContraseña" type="password" placeholder="Confirmar contraseña" required
-        class="input">
-        <p v-if="confirmarContraseña && !coincidirContras" class="error-text">Las contraseñas no coinciden</p>
+          <input v-model="confirmarContraseña" type="password" placeholder="Confirmar contraseña" required class="input">
+          <p v-if="confirmarContraseña && !passwordsMatch" class="error-text">Las contraseñas no coinciden</p>
         </div>
-      
-      <button type="submit">Registrarse</button>
-    </form>
-    <p v-if="error" class="error">{{ error }}</p>
-  </div>
+        
+        <button type="submit" >Registrarse</button>
+        <p v-if="error" class="error">{{ error }}</p>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -65,7 +57,7 @@ export default {
     };
   },
   computed: {
-    coincidirContras() {
+    passwordsMatch() {
       return this.contraseña === this.confirmarContraseña;
     },
     strengthClass() {
@@ -94,7 +86,7 @@ export default {
     }
   },
   methods: {
-    validarContra() {
+    validarContraseña() {
       this.hasMinLength = this.contraseña.length >= 8;
       this.hasUpperCase = /[A-Z]/.test(this.contraseña);
       this.hasLowerCase = /[a-z]/.test(this.contraseña);
@@ -119,6 +111,7 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 .register-page {
   position: fixed;
@@ -242,7 +235,7 @@ button:disabled {
 }
 
 .requirements li:before {
-  content: "x";
+  content: "✗";
   position: absolute;
   left: 0;
   color: #ff4444;
@@ -252,5 +245,4 @@ button:disabled {
   content: "✓";
   color: #00C851;
 }
-
 </style>
