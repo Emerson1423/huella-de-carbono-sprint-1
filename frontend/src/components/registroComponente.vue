@@ -235,7 +235,7 @@ button:disabled {
 }
 
 .requirements li:before {
-  content: "✗";
+  content: "x";
   position: absolute;
   left: 0;
   color: #ff4444;
