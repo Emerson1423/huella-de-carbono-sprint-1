@@ -253,40 +253,36 @@ app.post('/api/solicitar-restablecimiento', async (req, res) => { // Endpoint pa
     if (users.length === 0) {
       return res.status(404).json({ error: 'Correo no encontrado' });
     }
-    // Generar token temporal
-    const token = crypto.randomBytes(32).toString('hex');
-    resetTokens[token] = { correo, expires: Date.now() + 1000 * 60 * 15 }; // 15 minutos
-
-  const enlace = `http://localhost:8080/restablecer-contra?token=${token}`; // Enlace para restablecer la contraseña
+   // Generar código de 6 dígitos
+    const codigo = Math.floor(100000 + Math.random() * 900000).toString();
+    resetTokens[codigo] = { correo, expires: Date.now() + 1000 * 60 * 15 }; // 15 minutos
 
   await transporter.sendMail({
     from: '"Salvambiente" <equiposalvambiente@gmail.com>', //correo de envio de enlace de restablecimiento de contraseña
     to: correo,
-    subject: 'Restablece tu contraseña',
-    html: `<p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p>
-          <a href="${enlace}">${enlace}</a>`
+    subject: 'Código de recuperación de contraseña',
+    html: `<p>Tu código de recuperación es: <b>${codigo}</b></p>
+             <p>Este código es válido por 15 minutos.</p>`
   });
 
-res.json({ message: 'Se ha enviado un enlace de restablecimiento a tu correo.' }); // texto que muestra que se ha enviado el enlace de restablecimiento de contraseña
-
+ res.json({ message: 'Se ha enviado un código de recuperación a tu correo.' });
   } catch (error) {
-    console.error('Error en /api/solicitar-restablecimiento:', error); // para verificar errores en la consola
+    console.error('Error en /api/solicitar-restablecimiento:', error);
     res.status(500).json({ error: 'Error en el servidor' });
   }
 });
-
 
 // Restablecer contraseña
 app.post('/api/restablecer-contra', async (req, res) => { // 
   const { token, nuevaContraseña } = req.body;
   const data = resetTokens[token];
   if (!data || data.expires < Date.now()) {
-    return res.status(400).json({ error: 'Token inválido o expirado' });
+    return res.status(400).json({ error: 'Código inválido o expirado' });
   }
   try {
     const hashedPassword = await bcrypt.hash(nuevaContraseña, 10);
     await pool.query('UPDATE usuarios SET contraseña = ? WHERE correo = ?', [hashedPassword, data.correo]); // Actualiza la contraseña del usuario en la base de datos
-    delete resetTokens[token]; // Elimina el token de la memoria
+    delete resetTokens[codigo];
     res.json({ message: 'Contraseña restablecida correctamente' }); // texto que muestra que la contraseña se ha restablecido correctamente
   } catch (error) {
     res.status(500).json({ error: 'Error en el servidor' });

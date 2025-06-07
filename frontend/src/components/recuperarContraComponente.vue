@@ -4,7 +4,9 @@
       <h1>Recuperar contraseña</h1>
       <form @submit.prevent="handleSubmit">
         <input v-model="correo" type="email" placeholder="Correo" required />
-        <button type="submit">Enviar enlace</button>
+        <button type="submit" :disabled="timer > 0">
+          {{ timer > 0 ? `Espera ${timer}s` : 'Enviar código' }}
+        </button>
         <p v-if="mensaje" class="mensaje">{{ mensaje }}</p>
         <p v-if="error" class="error">{{ error }}</p>
       </form>
@@ -18,25 +20,42 @@
 <script>
 import axios from 'axios';
 export default {
-  name: 'RecuperarContraComponente',
   data() {
     return {
       correo: '',
       mensaje: '',
-      error: ''
+      error: '',
+      timer: 0,
+      intervalId: null
     };
   },
   methods: {
     async handleSubmit() {
+      if (this.timer > 0) return;
       this.mensaje = '';
       this.error = '';
       try {
-        const res = await axios.post('http://localhost:3000/api/solicitar-restablecimiento', { correo: this.correo });
-        this.mensaje = res.data.message;
+        await axios.post('http://localhost:3000/api/solicitar-restablecimiento', { correo: this.correo });
+        localStorage.setItem('correoRecuperacion', this.correo);
+        this.$router.push('/codigo-verificacion');
+        this.timer = 60;
+        this.startTimer();
       } catch (err) {
-        this.error = err.response?.data?.error || 'Error al solicitar restablecimiento';
+        this.error = err.response?.data?.error || 'Error al enviar el código';
       }
+    },
+    startTimer() {
+      this.intervalId = setInterval(() => {
+        this.timer--;
+        if (this.timer <= 0) {
+          clearInterval(this.intervalId);
+          this.intervalId = null;
+        }
+      }, 1000);
     }
+  },
+  beforeUnmount() {
+    if (this.intervalId) clearInterval(this.intervalId);
   }
 };
 </script>
@@ -45,7 +64,7 @@ export default {
 
 .recuperar-bg {
   min-height: 100vh;
-  background: #f5f5f5;
+  background-image: url("@/assets/fondoS.png");
   display: flex;
   justify-content: center;
   align-items: center;

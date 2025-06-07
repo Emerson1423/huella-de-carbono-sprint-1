@@ -1,13 +1,10 @@
 <template>
-  <RestablecerContraComponente />
+  <restablecer-contra-componente />
 </template>
 
 <script>
 import RestablecerContraComponente from '../components/restablecerContraComponente.vue';
 export default {
-  name: 'RestablecerContraView',
-  components: {
-    RestablecerContraComponente
-  }
-}
+  components: { RestablecerContraComponente }
+};
 </script>
