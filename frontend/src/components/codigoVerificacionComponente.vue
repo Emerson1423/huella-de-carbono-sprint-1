@@ -108,7 +108,10 @@ export default {
       this.error = '';
       this.mensaje = '';
       this.loading = true;
-      try {
+      try { //cambio aqui
+        await axios.post('http://localhost:3000/api/verificar-codigo', {
+          token: this.codigoUnido
+        });
         localStorage.setItem('codigoRecuperacion', this.codigoUnido);
         this.$router.push('/restablecer-contra');
       } catch (err) {

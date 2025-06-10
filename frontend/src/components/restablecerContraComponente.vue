@@ -3,8 +3,25 @@
     <div class="restablecer-box">
       <h1>Restablecer contraseña</h1>
       <form @submit.prevent="handleSubmit">
-        <input v-model="nueva" type="password" placeholder="Nueva contraseña" required />
-        <input v-model="confirmar" type="password" placeholder="Confirmar contraseña" required />
+        <div class="campo">
+          <input v-model="nueva" @input="validarContraseña" type="password" placeholder="Nueva contraseña" required class="input" />
+          <div class="password-strength" v-if="nueva.length > 0">
+            <div class="strength-bar" :class="strengthClass"></div>
+            <ul class="requirements">
+              <li :class="{ 'valid': hasMinLength }">Mínimo 8 caracteres</li>
+              <li :class="{ 'valid': hasUpperCase }">1 letra mayúscula</li>
+              <li :class="{ 'valid': hasLowerCase }">1 letra minúscula</li>
+              <li :class="{ 'valid': hasNumber }">1 número</li>
+              <li :class="{ 'valid': hasSpecialChar }">1 carácter especial</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="campo">
+          <input v-model="confirmar" type="password" placeholder="Confirmar contraseña" required class="input" />
+          <p v-if="confirmar && !passwordsMatch" class="error-text">Las contraseñas no coinciden</p>
+        </div>
+
         <button type="submit">Restablecer</button>
         <p v-if="mensaje" class="mensaje">{{ mensaje }}</p>
         <p v-if="error" class="error">{{ error }}</p>
@@ -18,6 +35,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -26,28 +44,58 @@ export default {
       mensaje: '',
       error: '',
       correo: localStorage.getItem('correoRecuperacion') || '',
-      codigo: localStorage.getItem('codigoRecuperacion') || ''
+      codigo: localStorage.getItem('codigoRecuperacion') || '',
+      hasMinLength: false,
+      hasUpperCase: false,
+      hasLowerCase: false,
+      hasNumber: false,
+      hasSpecialChar: false
     };
   },
+  computed: {
+    passwordsMatch() {
+      return this.nueva === this.confirmar;
+    },
+    strengthClass() {
+      const strength = [this.hasMinLength, this.hasUpperCase, this.hasLowerCase, this.hasNumber, this.hasSpecialChar]
+        .filter(Boolean).length;
+
+      return {
+        'weak': strength <= 2,
+        'medium': strength === 3 || strength === 4,
+        'strong': strength === 5
+      };
+    }
+  },
   methods: {
+    validarContraseña() {
+      this.hasMinLength = this.nueva.length >= 8;
+      this.hasUpperCase = /[A-Z]/.test(this.nueva);
+      this.hasLowerCase = /[a-z]/.test(this.nueva);
+      this.hasNumber = /\d/.test(this.nueva);
+      this.hasSpecialChar = /[\W_]/.test(this.nueva);
+    },
     async handleSubmit() {
       this.mensaje = '';
       this.error = '';
-      if (this.nueva !== this.confirmar) {
+
+      if (!this.passwordsMatch) {
         this.error = 'Las contraseñas no coinciden';
         return;
       }
+
       if (!this.codigo) {
         this.error = 'Código inválido';
         return;
       }
+
       try {
         const res = await axios.post('http://localhost:3000/api/restablecer-contra', {
-          codigo: this.codigo,
+          token: this.codigo,
           nuevaContraseña: this.nueva
         });
+
         this.mensaje = res.data.message;
-        // Limpia localStorage si quieres
         localStorage.removeItem('correoRecuperacion');
         localStorage.removeItem('codigoRecuperacion');
       } catch (err) {
@@ -128,4 +176,69 @@ button:disabled {
 .volver a:hover {
   text-decoration: underline;
 }
+
+.error {
+  color: #ff4444;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.error-text {
+  color: #ff4444;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.password-strength {
+  margin-top: 10px;
+}
+
+.strength-bar {
+  height: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: width 0.3s, background 0.3s;
+}
+
+.strength-bar.weak {
+  width: 30%;
+  background: #ff4444;
+}
+
+.strength-bar.medium {
+  width: 60%;
+  background: #ffbb33;
+}
+
+.strength-bar.strong {
+  width: 100%;
+  background: #00C851;
+}
+
+.requirements {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  font-size: 0.8rem;
+}
+
+.requirements li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 3px;
+  color: #777;
+}
+
+.requirements li:before {
+  content: "x";
+  position: absolute;
+  left: 0;
+  color: #ff4444;
+}
+
+.requirements li.valid:before {
+  content: "✓";
+  color: #00C851;
+}
+
 </style>
