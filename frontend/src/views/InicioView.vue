@@ -48,16 +48,21 @@ export default {
 }
 
 .imagen-inicio {
-  width: 100%;
-  max-width: 1000px;
-  margin-bottom: 24px;
-  display: flex;
-  justify-content: center;
+  width: 100vw;
+  height:85vh;
+  top:0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: -1;
+
+
 }
 .imagen-inicio img {
   width: 100%;
-  border-radius: 18px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  height: 100%;
+  object-fit: cover;
+ 
 }
 .cards {
   display: grid;
@@ -70,7 +75,7 @@ export default {
 .footer {
   margin-top: 48px;
   padding: 16px 0;
-  
+  font-family:  'Poppins', sans-serif;
   border-radius: 0 0 12px 12px;
   color: #222;
   font-weight: 600;

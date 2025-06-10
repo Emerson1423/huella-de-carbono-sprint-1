@@ -1,8 +1,9 @@
 <template>
   <header class="header">
-    <div class="logo">
-      <img src="@/assets/logo.png" alt="Logo" width="100" height="90" />
-    </div>
+    <div class="header-container">
+      <div class="logo">
+        <img src="@/assets/logo.png" alt="Logo" class="logo-img" />
+      </div>
     
     <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
       <span class="bar"></span>
@@ -24,9 +25,10 @@
         
       </ul>
     </nav>
+  </div>
   </header>
-</template>
 
+</template>
 <script>
 export default {
   name: 'NavComponente',
@@ -53,30 +55,40 @@ body {
   padding: 0;
   font-family: 'Poppins', sans-serif;
   background-color: rgb(255, 255, 255);
+
 }
 
 .header {
+
+    width: 100%;
+    background-color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    padding: 15px 0;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+}
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 2px 4px rgba(9, 80, 37, 0.422);
-  color: rgb(0, 0, 0);
-  font-family: 'Poppins', sans-serif;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 70px;
 }
 
-.logo img {
+.logo-img {
+  height: 85px;
+  width: auto;
   transition: transform 0.3s ease;
 }
 
-.logo img:hover {
+.logo:hover .logo-img {
   transform: scale(1.05);
 }
-
 .navigation {
   display: flex;
   justify-content: center;
@@ -180,3 +192,4 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 </style>
+

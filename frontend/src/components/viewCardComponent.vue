@@ -32,6 +32,7 @@ export default {
   flex-direction: column;
   align-items: center;
   min-height: 120px;
+  font-family:  'Poppins', sans-serif;
 }
 .view-card:hover {
   transform: translateY(-4px) scale(1.03);

@@ -122,6 +122,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  font-family:  'Poppins', sans-serif;
 }
 h1 {
   text-align: center;
