@@ -50,6 +50,11 @@ const routes = [
     path: '/restablecer-contra',
     name: 'RestablecerContra',
     component: () => import('../views/restablecer-contra.vue')
+  },
+    {
+    path:'/codigo-verificacion', 
+    name: 'CodigoVerificacion',
+    component: () => import('../views/codigo-verificacion.vue')
   }
 
 ];

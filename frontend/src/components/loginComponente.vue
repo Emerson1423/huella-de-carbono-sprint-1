@@ -28,10 +28,15 @@
       {{ loading ? 'Cargando...' : 'Ingresar' }}
     </button>
     <p v-if="error" class="error">{{ error }}</p>
-  </form>
-    <div class="olvido">
+    <div class="sign">
+        <p>¿No tienes cuenta? <a href="/registro">Regístrate</a></p>
+      </div>
+      <div class="olvido">
         <p><a href="/recuperar-contra">¿Olvidaste tu contraseña?</a></p>
       </div>
+
+  </form>
+    
   </div> 
 </div>
 </template>
@@ -95,54 +100,51 @@ export default {
 <style scoped>
 
 .login-page {
-  position: fixed; 
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("@/assets/registrofondo.png");
+  min-height: 100vh;
+  background-image: url("@/assets/fondoS.png");
   background-size: cover;
+  background-position: center;   /* Centra la imagen */
+  background-repeat: no-repeat;  /* Evita que se repita */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .login-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Poppins, sans-serif;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.35); /* Blanco translúcido */
+  backdrop-filter: blur(8px);             /* Efecto blur */
+  padding: 35px 30px 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  width: 100%;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 h1 {
   text-align: center;
+  margin-bottom: 18px;
   color: #333;
 }
-.caja{
-    background-color: #ffff;
-    padding: 30px;
-    border-radius: 10px;
-    margin-top: 50px;
-    
-    
-}
-
-
-
 
 .campo {
-  margin: 15px 0;
+  margin-bottom: 18px;
   
 }
 
 
 
 .input {
-  width: 100%;
-  padding: 8px;
+   width: 100%;
+  padding: 10px 16px;
+  box-sizing: border-box;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
   border-color:#8BC34A ;
-  
 }
 .input:focus {
   border-color: #8BC34A;
@@ -170,7 +172,7 @@ button {
   
 }
 .olvido a {
-  color: #8BC34A;
+  color: white;
   text-decoration: none;
 }
 
@@ -179,7 +181,7 @@ button {
   
 }
 .sign a {
-  color: #8BC34A;
+  color: white;
   text-decoration: none;
 }
 </style>

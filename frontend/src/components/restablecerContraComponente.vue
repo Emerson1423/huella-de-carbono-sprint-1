@@ -19,13 +19,14 @@
 <script>
 import axios from 'axios';
 export default {
-  name: 'RestablecerContra',
   data() {
     return {
       nueva: '',
       confirmar: '',
       mensaje: '',
-      error: ''
+      error: '',
+      correo: localStorage.getItem('correoRecuperacion') || '',
+      codigo: localStorage.getItem('codigoRecuperacion') || ''
     };
   },
   methods: {
@@ -36,18 +37,19 @@ export default {
         this.error = 'Las contraseñas no coinciden';
         return;
       }
-      const params = new URLSearchParams(window.location.search);
-      const token = params.get('token');
-      if (!token) {
-        this.error = 'Token inválido';
+      if (!this.codigo) {
+        this.error = 'Código inválido';
         return;
       }
       try {
         const res = await axios.post('http://localhost:3000/api/restablecer-contra', {
-          token,
+          codigo: this.codigo,
           nuevaContraseña: this.nueva
         });
         this.mensaje = res.data.message;
+        // Limpia localStorage si quieres
+        localStorage.removeItem('correoRecuperacion');
+        localStorage.removeItem('codigoRecuperacion');
       } catch (err) {
         this.error = err.response?.data?.error || 'Error al restablecer contraseña';
       }
@@ -59,7 +61,7 @@ export default {
 <style scoped>
 .restablecer-bg {
   min-height: 100vh;
-  background: #f5f5f5;
+  background-image: url("@/assets/fondoS.png");
   display: flex;
   justify-content: center;
   align-items: center;

@@ -33,6 +33,9 @@
         
         <button type="submit" >Registrarse</button>
         <p v-if="error" class="error">{{ error }}</p>
+        <div class="login-link">
+        <p>¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
+      </div>
       </form>
     </div>
   </div>
@@ -115,30 +118,35 @@ export default {
 <style scoped>
 .register-page {
   position: fixed;
+  min-height: 100vh;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("@/assets/registrofondo.png");
+  background-image: url("@/assets/fondoS.png");
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .register-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  padding:35px 30px 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+  width: 100%;
+  display: flex;
+  max-width: 370px;
+  flex-direction: column;
+  align-items: stretch;
   font-family: Poppins, sans-serif;
 }
 
-.caja {
-  background-color: #ffff;
-  padding: 30px;
-  border-radius: 10px;
-  margin-top: 50px;
-}
+
 
 h1 {
   text-align: center;
@@ -150,11 +158,14 @@ h1 {
 }
 
 .input {
-  width: 100%;
-  padding: 8px;
+ width: 100%;
+  padding: 10px 16px;
+  box-sizing: border-box;
   border: 1px solid #ddd;
-  border-radius: 10px;
-  border-color: #8BC34A;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  border-color:#8BC34A ;
 }
 
 .input:focus {
@@ -244,5 +255,17 @@ button:disabled {
 .requirements li.valid:before {
   content: "✓";
   color: #00C851;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 10px;
+}
+.login-link a {
+  color: white;
+  text-decoration: none;
+}
+.login-link a:hover {
+  text-decoration: underline;
 }
 </style>
