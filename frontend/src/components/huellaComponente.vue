@@ -1,10 +1,11 @@
 <template>
-  <div class="carbon-footprint-form">
-    <h1>Calcular tu huella ecológica</h1>
 
+   <h1 class="calculoT">Calcular tu huella ecológica</h1>
+  <div class="carbon-footprint-form">
+  
     <!-- Kilómetros recorridos -->
     <div class="form-group">
-      <label>¿Cuántos kilómetros recorres al mes?</label>
+      <label>¿Cuántos kilómetros recorres aproximada mente al mes?</label>
       <input 
         type="range" 
         min="0" 
@@ -98,6 +99,8 @@
 
     <button @click="calcularHuella" class="calcular-btn">Calcular</button>
   </div>
+
+  
 </template>
 
 <script>
@@ -279,7 +282,6 @@ export default {
 </script>
 
 <style scoped>
-
 .error-message {
   color: #ff4444;
   font-size: 0.9em;
@@ -296,11 +298,17 @@ export default {
   padding: 10px;
   border-radius: 4px;
 }
+.calculoT{
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+
+}
 .carbon-footprint-form {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif; 
 }
 
 .form-group {

@@ -1,18 +1,8 @@
 <template>
   <div class="historial">
-    <h1>Tu Huella Ecológica</h1>
+    <h1 class="titulo">Tu Huella Ecológica de este mes </h1>
 
-    <!-- Datos originales del formulario -->
-    <div class="datos-formulario" v-if="datosOriginales">
-      <h2>📝 Tus datos:</h2>
-      <p><strong>Kilómetros/mes:</strong> {{ datosOriginales.kilometros }} km</p>
-      <p><strong>Transporte:</strong> {{ formatTransporte(datosOriginales.transporte) }}</p>
-      <p><strong>Consumo eléctrico:</strong> {{ datosOriginales.electricidad }}</p>
-      <p><strong>Energía renovable:</strong> {{ datosOriginales.energiaRenovable === 'si' ? 'Sí ♻️' : 'No ⚠️' }}</p>
-      <p><strong>Reciclaje:</strong> {{ formatReciclaje(datosOriginales.reciclaje) }}</p>
-    </div>
-
-    <!-- Resultado calculado -->
+     <!-- Resultado calculado -->
     <div class="resultado" v-if="resultado">
       <h2>📊 Resultado:</h2>
       <p><strong>Total de emisiones:</strong> {{ resultado.puntuacionTotal }} kg CO₂</p>
@@ -38,13 +28,38 @@
       </div>
     </div>
 
+
+    <!-- Datos originales del formulario -->
+    <div class="datos-formulario" v-if="datosOriginales">
+      <h2>📝 Tus datos:</h2>
+      <p><strong>Kilómetros/mes:</strong> {{ datosOriginales.kilometros }} km</p>
+      <p><strong>Transporte:</strong> {{ formatTransporte(datosOriginales.transporte) }}</p>
+      <p><strong>Consumo eléctrico:</strong> {{ datosOriginales.electricidad }}</p>
+      <p><strong>Energía renovable:</strong> {{ datosOriginales.energiaRenovable === 'si' ? 'Sí ♻️' : 'No ⚠️' }}</p>
+      <p><strong>Reciclaje:</strong> {{ formatReciclaje(datosOriginales.reciclaje) }}</p>
+    </div>
+
+   
     <button @click="guardarEnHistorial" class="guardar-btn">💾 Guardar en historial</button>
-     <button @click="volverAFormulario" class="volver-btn">✏️ Volver al formulario</button>
+    <button @click="volverAFormulario" class="volver-btn">✏️ Volver al formulario</button>
+
+   
   </div>
+   <h1 class="actividades">¡Realiza distintas actividades para mejorar tu huella de carbono!</h1>
+
+    <div class="cards">
+      <ViewCard title="Hábitos" link="/" icon="habitos.png" />
+      <ViewCard title="Eventos" link="/" icon="Eventos.png" />
+      <ViewCard title="Noticias" link="/" icon="Noticias.png" />
+    </div>
 </template>
 
 <script>
+import ViewCard from '@/components/viewCardComponent.vue';
 export default {
+  components: {
+    ViewCard
+  },
   data() {
     return {
       resultado: null,
@@ -176,7 +191,7 @@ async guardarEnHistorial() {
       }
     },
     volverAFormulario() {
-      this.$router.push('/');
+      this.$router.push('/huella');
     }
   }
 };
@@ -194,10 +209,25 @@ async guardarEnHistorial() {
   font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-h1 {
+.titulo{
   text-align: center;
   color: #2e7d32;
   margin-bottom: 24px;
+}
+
+.actividades {
+  text-align: center;
+  margin-bottom: 24px;
+
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  gap: 32px;
+  margin-top: 32px;
+  width: 100%;
+  justify-content: center;
 }
 
 .datos-formulario, .resultado {
