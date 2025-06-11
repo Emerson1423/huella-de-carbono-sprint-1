@@ -100,11 +100,16 @@ export default {
 <style scoped>
 
 .login-page {
+  position: fixed;
   min-height: 100vh;
-  background-image: url("@/assets/fondoS.png");
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("@/assets/img/fondoS.png");
   background-size: cover;
-  background-position: center;   /* Centra la imagen */
-  background-repeat: no-repeat;  /* Evita que se repita */
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;

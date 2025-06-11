@@ -3,9 +3,20 @@
 
   <div class="contenido-inicio">
     
-    <div class="imagen-inicio">
-      <img src="@/assets/Banner-1.png" alt="Imagen de inicio" />
+  <div class="slideshow-container">
+    <div class="slide fade">
+      <img src="@/assets/img/Banner-1.png" alt="Imagen 1">
     </div>
+    <div class="slide fade">
+      <img src="@/assets/img/imgSlide.jpeg" alt="Imagen 2">
+    </div>
+    <div class="slide fade">
+      <img src="@/assets/img/imgSlide2.jpg" alt="Imagen 3">
+    </div>
+    <div class="slide fade">
+      <img src="@/assets/img/imgSlide3.jpeg" alt="Imagen 4">
+    </div>
+  </div>
 
     <h1>SalvAmbiente: Aprende. Juega. Cuida</h1>
     <p>Descubre cómo puedes ayudar al planeta desde tu pantalla. </p>
@@ -46,6 +57,46 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+.slideshow-container {
+  position: relative;
+  width: 100vw;
+  left: 0;
+  right: 0;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  height: 550px; /* Altura ajustable */
+
+
+}
+
+/* Estilos para cada slide */
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+/* Animación del slideshow */
+.slide:nth-child(1) { animation: fade 24s infinite; }
+.slide:nth-child(2) { animation: fade 24s infinite 6s; }
+.slide:nth-child(3) { animation: fade 24s infinite 12s; }
+.slide:nth-child(4) { animation: fade 24s infinite 18s; }
+/* Keyframes para el efecto fade */
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }    /* Fade in más rápido */
+  25% { opacity: 1; }
+  35% { opacity: 0; }    /* Fade out más rápido */
+  100% { opacity: 0; }
+}
 
 .imagen-inicio {
   width: 100vw;
@@ -73,12 +124,13 @@ export default {
   justify-content: center;
 }
 .footer {
-  margin-top: 48px;
-  padding: 16px 0;
-  font-family:  'Poppins', sans-serif;
-  border-radius: 0 0 12px 12px;
-  color: #222;
-  font-weight: 600;
+  margin-top: auto; /* Empuja el footer hacia abajo */
+  text-align: center;
+  padding: 20px 0;
+  background: #ffffff;
+  color: #131313;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
 }
 p {
   font-family: 'Arial', sans-serif;

@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header-container">
       <div class="logo">
-        <img src="@/assets/logo.png" alt="Logo" class="logo-img" />
+        <img src="@/assets/img/logo.png" alt="Logo" class="logo-img" />
       </div>
     
     <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
