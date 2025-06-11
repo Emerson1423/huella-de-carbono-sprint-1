@@ -302,6 +302,7 @@ export default {
   text-align: center;
   margin-bottom: 30px;
   color: #333;
+    font-family: 'Poppins', sans-serif;
 
 }
 .carbon-footprint-form {
@@ -313,6 +314,7 @@ export default {
 
 .form-group {
   margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
 }
 
 label {
