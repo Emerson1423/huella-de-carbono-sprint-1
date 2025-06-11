@@ -224,6 +224,7 @@ export default {
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s;
+  font-family: 'Poppins', sans-serif;
 }
 
 .logout-btn:hover {
@@ -241,6 +242,7 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  font-family: 'Poppins', sans-serif;
 }
 
 .modal-content {
@@ -250,6 +252,7 @@ export default {
   width: 350px;
   max-width: 90%;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .modal-actions {
@@ -281,6 +284,7 @@ export default {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .header {
