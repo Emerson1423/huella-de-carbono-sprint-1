@@ -213,7 +213,6 @@ export default {
 </script>
 
 <style scoped>
-
 .logout-btn {
   position: absolute;
   top: 20px;
@@ -357,5 +356,7 @@ export default {
   text-align: center;
   padding: 40px;
   color: #777;
-}
+}   
+
+
 </style>
