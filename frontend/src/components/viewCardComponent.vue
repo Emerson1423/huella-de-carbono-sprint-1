@@ -1,7 +1,7 @@
  <template>
   <div class="view-card" @click="$router.push(link)">
     <div class="icon">
-      <img :src="require(`@/assets/${icon}`)" :alt="title" />
+      <img :src="require(`@/assets/img/${icon}`)" :alt="title" />
     </div>
     <div class="title">{{ title }}</div>
   </div>

@@ -63,14 +63,24 @@ export default {
 <style scoped>
 
 .recuperar-bg {
+  position: fixed;
   min-height: 100vh;
-  background-image: url("@/assets/fondoS.png");
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("@/assets/img/fondoS.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 .recuperar-box {
-  background: #fff;
+  background-color: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);  
   padding: 35px 30px 25px 30px;
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
@@ -79,11 +89,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  font-family: 'Poppins', sans-serif;
 }
 h1 {
   text-align: center;
   color: #333;
   margin-bottom: 18px;
+}
+.input::placeholder {
+    color:#8BC34A;
 }
 input {
   width: 100%;
@@ -125,7 +139,7 @@ button:disabled {
   margin-top: 10px;
 }
 .volver a {
-  color: #8BC34A;
+  color: #080808;
   text-decoration: none;
 }
 .volver a:hover {

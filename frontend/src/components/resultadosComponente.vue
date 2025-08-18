@@ -206,7 +206,7 @@ async guardarEnHistorial() {
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   padding: 32px 24px;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Poppins',  sans-serif;
 }
 
 .titulo{
@@ -218,6 +218,7 @@ async guardarEnHistorial() {
 .actividades {
   text-align: center;
   margin-bottom: 24px;
+  font-family: 'Poppins', sans-serif;
 
 }
 
