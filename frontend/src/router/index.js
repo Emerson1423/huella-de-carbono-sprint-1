@@ -55,7 +55,17 @@ const routes = [
     path:'/codigo-verificacion', 
     name: 'CodigoVerificacion',
     component: () => import('../views/codigo-verificacion.vue')
-  }
+  },
+  {
+    path: '/articulos',
+    name: 'articulos',
+    component: () => import('../views/articulosView')
+  },
+  {
+    path: '/videos',
+    name: 'videos',
+    component: () => import('../views/videosView')
+  },
 
 ];
 
