@@ -35,8 +35,8 @@
         <img 
           :src="tarjetaActual.imagen" 
           :alt="tarjetaActual.alt || 'Imagen ilustrativa'"
-          class="modal-imagen"
-        >
+          class="modal-imagen" >
+
         <div class="modal-texto">
           <p>{{ tarjetaActual.textoCompleto || tarjetaActual.texto }}</p>
           <p v-if="tarjetaActual.enlace" class="modal-fuente">
