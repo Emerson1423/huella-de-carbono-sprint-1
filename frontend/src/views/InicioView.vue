@@ -5,22 +5,30 @@
     
   <div class="slideshow-container">
     <div class="slide fade">
-      <img src="@/assets/img/Banner-1.png" alt="Imagen 1">
+      <img src="@/assets/img/GOHc.gif" alt="Imagen 1">
+    </div>
+        <div class="slide fade">
+      <img src="https://i.gifer.com/2m8z.gif" alt="Imagen 2">
     </div>
     <div class="slide fade">
-      <img src="@/assets/img/imgSlide.jpeg" alt="Imagen 2">
+      <img src="@/assets/img/imgSlide.jpeg" alt="Imagen 3">
     </div>
     <div class="slide fade">
-      <img src="@/assets/img/imgSlide2.jpg" alt="Imagen 3">
+      <img src="@/assets/img/imgSlide2.jpg" alt="Imagen 4">
     </div>
     <div class="slide fade">
-      <img src="@/assets/img/imgSlide3.jpeg" alt="Imagen 4">
+      <img src="@/assets/img/imgSlide3.jpeg" alt="Imagen 5">
+    </div>
+        <div class="slide fade">
+      <img src="https://img.itch.zone/aW1hZ2UvMjMyNTE5NC8xMzc3Mjg5NS5wbmc=/original/thWm3L.png" alt="Imagen 6">
     </div>
   </div>
 
     <h1>SalvAmbiente: Aprende. Juega. Cuida</h1>
-    <p>Descubre cómo puedes ayudar al planeta desde tu pantalla. </p>
-    <p>Participa en actividades interactivas y conviértete en parte del cambio.</p>
+    <p>Descubre cómo puedes ayudar al planeta desde tu pantalla. 
+      Descubre cómo puedes ayudar al planeta desde tu pantalla. 
+      Participa en actividades interactivas y conviértete en parte del cambio.
+    </p>
     <!-- Cards -->
     <div class="cards">
       <ViewCard title="Hábitos" link="/" icon="habitos.png" />
@@ -133,12 +141,12 @@ export default {
   font-family: 'Poppins', sans-serif;
 }
 p {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
   font-weight: 655;
 }
 h1 {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 32px;
   font-weight: 700;
   color: #8BC34A;
