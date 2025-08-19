@@ -306,10 +306,12 @@ export default {
 
 }
 .carbon-footprint-form {
+  background-color: #8bc34a87;
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif; 
+  font-family:'Poppins', sans-serif; 
+  border-radius: 4%;
 }
 
 .form-group {
