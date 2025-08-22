@@ -263,7 +263,7 @@ export default {
 }
 
 .modal-fuente a {
-  color: #3498db;
+  color: #8c8383;
   text-decoration: none;
 }
 
