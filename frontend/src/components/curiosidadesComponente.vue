@@ -30,13 +30,6 @@
           </span>
           <h3 class="fact-title">{{ fact.title }}</h3>
           <p class="fact-text">{{ fact.text }}</p>
-          <span class="fact-source">
-            Fuente: 
-            <a :href="getSourceLink(fact.source)" target="_blank" rel="noopener">
-              {{ fact.source }}
-            </a>
-          </span>
-
         </div>
       </div>
     </div>
@@ -79,7 +72,6 @@ export default {
           category: 'oceans',
           title: 'El 80% de la vida está en los océanos',
           text: 'Aunque los océanos cubren el 71% de la superficie terrestre, albergan el 80% de toda la vida en la Tierra y producen más de la mitad del oxígeno que respiramos.',
-          source: 'UNESCO',
           image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80'
         },
         {
@@ -87,7 +79,6 @@ export default {
           category: 'climate',
           title: '2023 fue el año más cálido registrado',
           text: 'El año 2023 batió todos los récords de temperatura global, siendo 1.48°C más cálido que los niveles preindustriales, acercándose peligrosamente al límite de 1.5°C del Acuerdo de París.',
-          source: 'Servicio Copernicus de Cambio Climático',
           image: 'https://cdn.agenciasinc.es/var/ezwebin_site/storage/images/_aliases/img_1col/media/images/grafico219/11738725-1-esl-MX/grafico2.png'
         },
         {
@@ -95,7 +86,6 @@ export default {
           category: 'nature',
           title: 'Los bosques tropicales generan lluvia',
           text: 'La Amazonía libera alrededor de 20 billones de toneladas de agua a la atmósfera cada día, creando "ríos voladores" que influyen en las precipitaciones a miles de kilómetros de distancia.',
-          source: 'Instituto Nacional de Pesquisas da Amazonia',
           image: 'https://c.files.bbci.co.uk/6A7C/production/_97506272_p05d69hg.jpg'
         },
         {
@@ -103,7 +93,6 @@ export default {
           category: 'animals',
           title: 'Pequeñas gigantes',
           text: 'Sabías que sin este animal tan pequeño, la vida en la tierra sería casi imposible. Se estima que alrededor del 84% de los cultivos de alimentos está en manos de las abejas, que se encargan de polinizarlos para que sigan floreciendo. La población de abejas está disminuyendo debido a los gases de efecto invernadero, los pesticidas y un tipo de ácaro conocido como Varroa que es letal para estos insectos.',
-          source: 'Revista Nature',
           image: 'https://upload.wikimedia.org/wikipedia/commons/3/38/Bees_1_bg_082804.jpg'
         },
         {
@@ -111,7 +100,6 @@ export default {
           category:'oceans',
           title:'El Plástico y el Mar',
           text:'Cada minuto, se utilizan en el mundo alrededor de un millón de bolsas de plástico. Este plástico, lejos de reciclarse, suele acabar en el mar y apenas se recicla el 5% de este material. De hecho, se estima que un total de 6 millones de toneladas de basura plástica acaba en los mares, alterando los ecosistemas y la fauna.',
-          source:'Pure and Nature',
           image: 'https://www.bbva.com/wp-content/uploads/2021/12/inmenso-oceano-de-la-basura-apertura.jpg'
         },
         {
@@ -119,7 +107,6 @@ export default {
           category:'climate',
           title:'¿Un futuro sin chocolate barato? La culpa es del clima.',
           text:'Sabías que el chocolate podría subir cada vez más de precio debido al cambio climático, ya que hay dificultad en el cultivo de esta planta. Esto significaría que algo tan habitual como una chocolatina podría llegar a ser un bien de lujo tan exquisito como el caviar.',
-          source:'Pure and Nature',
           image:'https://media.es.wired.com/photos/6748f471dfa63bd22092139c/16:9/w_1280,c_limit/GettyImages-1244871766.jpg'
         },
         {
@@ -127,7 +114,6 @@ export default {
           category:'humans',
           title:'30 litros en un día: El coste de un grifo que gotea',
           text:'Haz imaginado que un grifo de agua goteando puede llegar a desperdiciar hasta 30 litros de agua al día, el equivalente a seis garrafas de agua. Un pequeño gesto como cerrar bien el grifo puede suponer un ahorro muy importante.',
-          source:'Pure and Nature',
           image: 'https://elmanitasideal.es/wp-content/uploads/2019/01/arreglar-un-grifo-que-gotea.jpg'
         }
       ]
@@ -158,20 +144,6 @@ export default {
       }
       return categoryMap[category] || category
     },
-  getSourceLink(source) {
-    // fuentes a sus URLs correspondientes
-    const sourceLinks = {
-      'Estudio de la Universidad de British Columbia': 'https://www.academiadecienciaslogica.com/post/comunicacion-entre-plantas-red-subterranea',
-      'Fondo Monetario Internacional': 'https://www.imf.org/en/Publications/fandd/issues/2019/12/natures-solution-to-climate-change-chami',
-      'UNESCO': 'https://www.unesco.org/',
-      'Servicio Copernicus de Cambio Climático': 'https://www.agenciasinc.es/Noticias/Copernicus-confirma-que-2023-fue-el-ano-mas-caluroso-desde-que-hay-registros',
-      'Instituto Nacional de Pesquisas da Amazonia': 'https://www.inpa.gov.br/',
-      'Revista Nature': 'https://www.nature.com/',
-      'Pure and Nature': 'https://www.moltexbaby.com/',
-
-    };
-    return sourceLinks[source] || '#';
-  }
 }
 }
 </script>
@@ -318,19 +290,6 @@ h1 {
   line-height: 1.6;
   flex-grow: 1;
   color: #444;
-}
-.fact-source{
-  color: #8c8383;
-}
-.fact-source a {
-  color: #8c8383;
-  text-decoration: none;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.fact-source a:hover {
-  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
