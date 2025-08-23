@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 .view-card {
-  background: rgb(8, 94, 38);
+  background: rgb(6, 156, 59);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 32px 16px;
