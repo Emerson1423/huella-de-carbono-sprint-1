@@ -1,8 +1,6 @@
 <template>
     <navComponente/>
-    <br>
-    <br>
-    <br>
+
     <videosComponente/>
 
 </template>
