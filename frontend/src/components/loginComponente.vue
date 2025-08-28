@@ -28,6 +28,21 @@
       {{ loading ? 'Cargando...' : 'Ingresar' }}
     </button>
     <p v-if="error" class="error">{{ error }}</p>
+          <div class="google-btn">
+        <a href="http://localhost:3000/api/auth/google">
+          <button type="button" class="google">Inicia con
+              <svg width="18" height="18" viewBox="0 0 48 48" style="vertical-align: middle; margin-right: 8px;">
+                <g>
+              <path fill="#4285F4" d="M43.6 20.5h-1.9V20H24v8h11.3c-1.6 4.3-5.7 7-11.3 7-6.6 0-12-5.4-12-12s5.4-12 12-12c2.7 0 5.2.9 7.2 2.4l6.1-6.1C34.1 5.1 29.3 3 24 3 12.9 3 4 11.9 4 23s8.9 20 20 20c11 0 19.7-8 19.7-20 0-1.3-.1-2.7-.3-4z"/>
+              <path fill="#34A853" d="M6.3 14.7l6.6 4.8C14.3 16.1 18.8 13 24 13c2.7 0 5.2.9 7.2 2.4l6.1-6.1C34.1 5.1 29.3 3 24 3c-7.1 0-13.1 4.1-16.3 10.1z"/>
+              <path fill="#FBBC05" d="M24 43c5.3 0 10.1-1.8 13.8-4.9l-6.4-5.2c-2 1.4-4.5 2.1-7.4 2.1-5.6 0-10.3-3.7-12-8.7l-6.6 5.1C10.9 39.1 17 43 24 43z"/>
+              <path fill="#EA4335" d="M43.6 20.5h-1.9V20H24v8h11.3c-1.1 3-3.5 5.3-6.3 6.6l6.4 5.2C41.1 36.1 44 30.1 44 24c0-1.3-.1-2.7-.4-4z"/>
+              </g>
+            </svg>
+              
+          </button>
+        </a>
+      </div>
     <div class="sign">
         <p>¿No tienes cuenta? <a href="/registro">Regístrate</a></p>
       </div>
@@ -106,7 +121,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("@/assets/img/fondoS.png");
+  background-image: url("@/assets/img/fondoS3.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -165,13 +180,32 @@ h1 {
 button {
   width: 100%;
   padding: 10px;
-  background: #8BC34A;
+  background: #406e0b;
   color: white;
   border: none;
   border-radius: 10px;
   cursor: pointer;
 }
 
+button:disabled {
+  background: #a5d6a7;
+  cursor: not-allowed;
+}
+
+.google-btn {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 18px;
+}
+button.google {
+  background: rgb(44, 79, 36);
+  color:#fff;
+  margin-top: 0;
+}
+
+button.google:hover {
+  background: #4d7ee6;
+}
 .olvido {
   text-align: center;
   margin-top: 20px;

@@ -41,6 +41,13 @@ const routes = [
     component: () => import('@/components/registroComponente.vue'),
     meta: { requiresAuth: false }
   },
+
+  {
+    path: '/login-google',
+    name: 'LoginGoogle',
+    component: () => import('../views/login-google.vue')
+  },
+  
     {
     path: '/recuperar-contra',
     name: 'RecuperarContra',
