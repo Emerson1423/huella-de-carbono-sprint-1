@@ -113,7 +113,7 @@ body {
     background-color: #ffffff;
     font-family: 'Poppins', sans-serif;
     padding: 15px 0;
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;

@@ -1,10 +1,6 @@
 <template>
 <NavComponente></NavComponente>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <curiosidadesComponente></curiosidadesComponente>
 </template>
 <script>

@@ -1,4 +1,6 @@
 <template>
+  <NavComponente/>
+
   <div class="register-page"> 
     <div class="caja">
       <form @submit.prevent="handleRegister" class="register-form">
@@ -58,8 +60,13 @@
 
 <script>
 import axios from 'axios';
+import NavComponente from './NavComponente.vue';
 
 export default {
+  components:{
+    NavComponente
+
+  },
   data() {
     return {
       usuario: '',
@@ -131,8 +138,12 @@ export default {
 </script>
 
 <style scoped>
+header{
+  padding: 30px;
+  
+}
 .register-page {
-  position: fixed;
+  position:fixed;
   min-height: 100vh;
   top: 0;
   left: 0;
@@ -154,7 +165,7 @@ export default {
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
   width: 100%;
-  display: flex;
+  /*display: flex;*/
   max-width: 370px;
   flex-direction: column;
   align-items: stretch;

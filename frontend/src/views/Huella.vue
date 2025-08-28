@@ -1,12 +1,7 @@
 <template>
 
   <NavComponente></NavComponente>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+
    <div>
   <HuellaComponente></HuellaComponente>
    </div>
