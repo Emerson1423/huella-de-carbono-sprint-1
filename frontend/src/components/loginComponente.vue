@@ -1,7 +1,6 @@
-<template>
-      <NavComponente/>
-   <div class="login-page">  
-    
+<template> 
+  
+  <div class="login-page">  
   <div class="caja">
   <form @submit.prevent="handleSubmit" class="login-form">
     <h1>Bienvenido de nuevo</h1>
@@ -51,22 +50,16 @@
       </div>
 
   </form>
-    
+
   </div> 
-
 </div>
-
 </template>
 
 <script>
 import axios from 'axios';
-import NavComponente from '../components/NavComponente.vue';
 
 
 export default {
-  components:{
-NavComponente
-  },
 
   data() {
     return {
@@ -129,7 +122,7 @@ NavComponente
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("@/assets/img/fondoS.png");
+  background-image: url("@/assets/img/fondoS3.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -188,7 +181,7 @@ h1 {
 button {
   width: 100%;
   padding: 10px;
-  background: #406e0b;
+  background: #8bc34a;
   color: white;
   border: none;
   border-radius: 10px;

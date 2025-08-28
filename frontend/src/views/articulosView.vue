@@ -1,5 +1,8 @@
 <template>
 <NavComponente/>
+    <br>
+    <br>
+    <br>
 
 <articulosComponente/>
 </template>

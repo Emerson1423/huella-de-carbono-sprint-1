@@ -1,5 +1,4 @@
 <template>
-  <NavComponente/>
 
   <div class="register-page"> 
     <div class="caja">
@@ -60,13 +59,9 @@
 
 <script>
 import axios from 'axios';
-import NavComponente from './NavComponente.vue';
 
 export default {
-  components:{
-    NavComponente
 
-  },
   data() {
     return {
       usuario: '',
@@ -138,10 +133,7 @@ export default {
 </script>
 
 <style scoped>
-header{
-  padding: 30px;
-  
-}
+
 .register-page {
   position:fixed;
   min-height: 100vh;
@@ -165,7 +157,7 @@ header{
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
   width: 100%;
-  /*display: flex;*/
+  display: flex;
   max-width: 370px;
   flex-direction: column;
   align-items: stretch;
@@ -206,7 +198,7 @@ h1 {
 button {
   width: 100%;
   padding: 10px;
-  background: #406e0b;
+  background: #8bc34a;
   color: white;
   border: none;
   border-radius: 10px;
