@@ -45,7 +45,7 @@
           <router-link to="/huella" class="dropdown-link" @click="closeAll">Calcular Co2</router-link>
         </li>
         <li class="dropdown-item">
-          <router-link to="/" class="dropdown-link" @click="closeAll">Hábitos</router-link>
+          <router-link to="/habitos" class="dropdown-link" @click="closeAll">Hábitos</router-link>
         </li>
         <li class="dropdown-item">
           <router-link to="/" class="dropdown-link" @click="closeAll">Eventos</router-link>

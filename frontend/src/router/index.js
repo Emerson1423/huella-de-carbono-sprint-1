@@ -17,6 +17,7 @@ const routes = [
     component: Huella,
     meta: { requiresAuth: false } // Explícitamente público
   },
+  
   {
     path: '/resultados',
     name: 'resultados',
@@ -82,6 +83,12 @@ const routes = [
     path: '/noticias',
     name: 'noticias',
     component: () => import('../views/noticiasView')
+  },
+   {
+    path: '/habitos',
+    name: 'Habitos',
+    component: () => import('@/components/HabitosComponente.vue'),
+    meta: { requiresAuth: true }
   },
 
 ];

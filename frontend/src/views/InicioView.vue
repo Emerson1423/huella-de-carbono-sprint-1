@@ -35,7 +35,7 @@
       <ViewCard title="Noticias" link="/" icon="Noticias.png" />      
       <ViewCard title="Calcula tu huella" link="/" icon="Huella.png" />      
       <ViewCard title="Recursos Ambientales" link="/" icon="Articulo.png" />
-      <ViewCard title="Hábitos" link="/" icon="habitos.png" />
+      <ViewCard title="Hábitos" link="/habitos" icon="habitos.png" />
       <ViewCard title="Eventos" link="/" icon="Eventos.png" />
       <ViewCard title="Entretenimiento" link="/" icon="Entretenimiento.png" />
     </div>
