@@ -17,9 +17,10 @@
         </div>
 
         <!-- BENEFICIOS -->
-        <div v-if="habito.beneficios" class="beneficios-section">
-          <h3>Beneficios</h3>
-          <ul class="beneficios-lista">
+         
+        <div v-if="habito.beneficios" class="desplegable" @click="toggle('beneficios')" :class="{ activo: abierto.beneficios }">
+          <div class="desplegable-header"> Beneficios</div>
+          <ul class="desplegable-contenido">
             <li v-for="beneficio in habito.beneficios" :key="beneficio">
               {{ beneficio }}
             </li>
@@ -27,9 +28,10 @@
         </div>
 
         <!-- CONSEJOS PRÁCTICOS -->
-        <div v-if="habito.consejosPracticos" class="consejos-section">
-          <h3>Consejos prácticos</h3>
-          <ul class="consejos-lista">
+         
+        <div v-if="habito.consejosPracticos" class="desplegable" @click="toggle('consejos')" :class="{ activo: abierto.consejos }">
+          <div class="desplegable-header"> Consejos prácticos</div>
+          <ul class="desplegable-contenido">
             <li v-for="consejo in habito.consejosPracticos" :key="consejo">
               {{ consejo }}
             </li>
@@ -38,13 +40,13 @@
 
         <!-- ARTÍCULOS -->
         <div v-if="habito.articulos" class="articulos-section">
-          <h3>Artículos recomendados</h3>
+          <h3>Lee más información </h3> 
           <div class="articulos-grid">
             <div v-for="articulo in habito.articulos" :key="articulo.url" class="articulo-card">
               <h4>{{ articulo.titulo }}</h4>
               <p class="fuente">Fuente: {{ articulo.fuente }}</p>
               <a :href="articulo.url" target="_blank" class="link-btn">
-                Leer artículo 
+                Leer aquí 
               </a>
             </div>
           </div>
@@ -52,7 +54,7 @@
 
         <!-- VIDEOS -->
          <div v-if="habito.videos" class="videos-section">
-          <h3>Videos educativos</h3>
+          <h3>Video educativo</h3> 
           <div class="videos-grid">
             <div v-for="video in habito.videos" :key="video.url" class="video-card">
               
@@ -64,7 +66,7 @@
                   class="video-thumbnail"
                 />
                 <div class="play-button">
-                  <div class="play-icon">▶</div>
+                  <div class="play-icon">▶ Duración</div> 
                 </div>
                 <div class="video-duracion">{{ video.duracion }}</div>
               </div>
@@ -165,9 +167,20 @@ export default {
 
   beforeUnmount() {
     window.removeEventListener('keydown', this.manejarTeclas);
-  },
-
- methods: {
+  }, 
+  
+  //cambio aqui
+  data() {
+   
+  return {
+    abierto: {
+      beneficios: false,
+      consejos: false
+    }
+    };
+    },
+    //
+methods: {
   manejarTeclas(evento) {
     switch(evento.key) {
       case 'ArrowLeft':
@@ -188,11 +201,15 @@ export default {
         break;
       case 'Enter':
         evento.preventDefault();
-        this.$emit('agregar');
+        this.$emit('agregar'); 
         break;
-    }
-  },
-
+    } 
+  }, 
+  //cambio aqui
+  toggle(seccion) {
+    this.abierto[seccion] = !this.abierto[seccion];
+  }, 
+//
   /**
    * Extrae el thumbnail de YouTube automáticamente
    */
@@ -206,15 +223,12 @@ export default {
     }
 
     return 'https://via.placeholder.com/480x360/cccccc/666666?text=Video';
-  },
+  }, 
 
-  /**
-   * Abre el video en una nueva pestaña
-   */
   abrirVideo(url) {
     window.open(url, '_blank');
-  }
-}
+  } 
+} 
 };
 
 </script>
@@ -333,7 +347,6 @@ export default {
 
 /* Secciones adicionales */
 .explicacion-completa,
-.beneficios-section,
 .consejos-section,
 .articulos-section,
 .videos-section {
@@ -370,20 +383,6 @@ export default {
   padding-bottom: 0.5rem;
 }
 
-/* Listas */
-.beneficios-lista,
-.consejos-lista {
-  list-style: none;
-  padding: 0;
-}
-.beneficios-lista li,
-.consejos-lista li {
-  background: #f1f8e9;
-  margin: 0.5rem 0;
-  padding: 0.8rem;
-  border-left: 4px solid #4caf50;
-  border-radius: 4px;
-}
 
 /* Cards de artículos y videos */
 .articulos-grid,
@@ -478,6 +477,61 @@ export default {
   line-height: 1.5;
 }
 
+/* Cambio aqui */
+
+/* Contenedor desplegable */
+.desplegable{
+  margin: 1.5rem 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Cabecera */
+.desplegable-header {
+  background: #4caf50;
+  color: #fff;
+  padding: 0.8rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Contenido oculto */
+.desplegable-contenido {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  background: #f9f9f9;
+  padding: 0 1rem; /* padding horizontal fijo */
+}
+
+/* Cuando pasas el puntero, se despliega */
+.desplegable.activo .desplegable-contenido {
+  max-height: 500px; /* ajusta según lo largo del texto */
+  padding: 1rem;
+}
+
+/* Estilo de ítems */
+.desplegable-contenido li {
+  background: #f1f8e9;
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  border-left: 4px solid #4caf50;
+  border-radius: 4px;
+}
+.videos-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.video-card {
+  max-width: 800px; 
+  width: 100%;
+  text-align: center;
+}
 
 /* Botones de enlaces */
 .link-btn {
