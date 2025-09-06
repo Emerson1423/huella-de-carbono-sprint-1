@@ -1,11 +1,10 @@
-
 <template>
-  <div>
-    <!-- Header con tu diseño -->
+  <NavComponente></NavComponente>
+  <div class="contenido-habitos">
     <h1 class="title-habito">
       Hábitos Ecológicos
     </h1>
-    <img v-if="!mostrarDetalle" src="@/assets/img/atadc.png" alt="Hábitos Ecológicos" class="img-hab" />
+    <img v-if="!mostrarDetalle" src="@/assets/img/Img-Hab.jpg" alt="Hábitos Ecológicos" class="img-hab" />
     <img v-else :src="cards[habitoActual].img" :alt="cards[habitoActual].title" class="img-hab" />
 
 
@@ -21,7 +20,7 @@
           <img :src="card.img" :alt="card.title" class="card-img" />
           <h2 class="card-title">{{ card.title }}</h2>
           <p class="card-desc">{{ card.desc }}</p>
-          <button class="card-btn" @click.stop="">Ver más</button>
+          <button class="card-btn" @click.stop="agregarHabito">Agregar</button>
         </div>
       </div>
     </div>
@@ -38,15 +37,19 @@
       @agregar="agregarHabito"
     />
   </div>
+
 </template>
 
 <script>
 import HabitoDetalle from './HabitoDetalle.vue';
+import NavComponente from './NavComponente.vue';
+
 
 export default {
   name: 'HabitosComponente',
   components: {
-    HabitoDetalle
+    HabitoDetalle,
+    NavComponente
   },
   
   data() {
@@ -528,27 +531,27 @@ export default {
 <style scoped>
 /* Título principal */
 .title-habito {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: left;
-  margin: 1.5rem 0;
-  color: #2e7d32;
+  font-size: 2rem;
+  text-align: center; 
+  margin: 2rem 0 1.5rem 0;
+  color: #2c3e50;
+  letter-spacing: 0.5px;
 }
-
-@media (min-width: 768px) {
-  .title-habito {
-    font-size: 2rem;
-  }
+.contenido-habitos{
+  margin-top: 100px;
 }
 
 /* Imagen destacada */
 .img-hab {
+  width: 100%;
   display: block;
   margin: 0 auto 2rem auto;
-  max-width: 1200px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1100px;
+  object-fit: cover;
+  height: 400px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
 /* Grid de tarjetas */
@@ -557,6 +560,7 @@ export default {
   grid-template-columns: 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
+  padding: 0 1.5rem;
 }
 
 @media (min-width: 600px) {
@@ -568,6 +572,7 @@ export default {
 @media (min-width: 900px) {
   .cards-grid {
     grid-template-columns: repeat(4, 1fr);
+    padding: 0 2.5rem;
   }
 }
 
@@ -583,6 +588,7 @@ export default {
   align-items: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  min-height: 350px;
 }
 
 .viewcard:hover {
@@ -604,7 +610,7 @@ export default {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #2e7d32;
 }
 
 .card-desc {
@@ -612,12 +618,12 @@ export default {
   color: #555;
   margin-bottom: 1rem;
   line-height: 1.4;
-  text-align: justify;
+  
 }
 
 /* Botón de tarjeta */
 .card-btn {
-  background: #4caf50;
+  background: #2e7d32;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -625,6 +631,7 @@ export default {
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s ease;
+  margin-top: auto; 
 }
 
 .card-btn:hover {
@@ -632,4 +639,58 @@ export default {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
 }
+
+
+
+@media (min-width: 768px) {
+  .title-habito {
+    font-size: 2rem;
+    margin: 2.5rem 0 2rem 0;
+  }
+}
+
+/* Contenedor de la imagen para mejor control */
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+/* Efecto hover opcional para la imagen */
+.img-hab:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .img-hab {
+    height: 300px;
+    max-width: 90%;
+  }
+  
+  .title-habito {
+    font-size: 2rem;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+  .img-hab {
+    height: 250px;
+    border-radius: 12px;
+  }
+  
+  .title-habito {
+    font-size: 2rem;
+    margin: 1.5rem 0 1rem 0;
+  }
+  
+  .img-container {
+    margin: 1.5rem 0;
+    padding: 0 0.5rem;
+  }
+}
+
 </style>

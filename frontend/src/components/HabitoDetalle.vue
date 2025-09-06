@@ -1,4 +1,6 @@
 <template>
+  <NavComponente></NavComponente>
+  
   <div class="detalle-container">
     <div class="detalle-habito">
       <div class="detalle-contenido">
@@ -134,6 +136,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'HabitoDetalle',
   
