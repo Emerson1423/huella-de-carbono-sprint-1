@@ -51,7 +51,7 @@
           <router-link to="/" class="dropdown-link" @click="closeAll">Eventos</router-link>
         </li>
         <li class="dropdown-item">
-          <router-link to="/juegos" class="dropdown-link" @click="closeAll">Entretenimiento</router-link>
+          <router-link to="/" class="dropdown-link" @click="closeAll">Entretenimiento</router-link>
         </li>
       </ul>
     </li>    
@@ -112,7 +112,7 @@ body {
     width: 100%;
     background-color: #ffffff;
     font-family: 'Poppins', sans-serif;
-    padding: 15px 0;
+    padding: 15px ;
     position: fixed;
     top: 0;
     left: 0;
@@ -126,13 +126,14 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  height: 70px;
+  height: 60px;
 }
 
 .logo-img {
-  height: 85px;
+  height: 75px;
   width: auto;
   transition: transform 0.3s ease;
+
 }
 
 .logo:hover .logo-img {

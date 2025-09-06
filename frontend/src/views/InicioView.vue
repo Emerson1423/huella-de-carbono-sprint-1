@@ -32,9 +32,9 @@
   
     <!-- Cards -->
     <div class="cards">
-      <ViewCard title="Noticias" link="/" icon="Noticias.png" />      
-      <ViewCard title="Calcula tu huella" link="/" icon="Huella.png" />      
-      <ViewCard title="Recursos Ambientales" link="/" icon="Articulo.png" />
+      <ViewCard title="Noticias" link="/noticias" icon="Noticias.png" />      
+      <ViewCard title="Calcula tu huella" link="/huella" icon="Huella.png" />      
+      <ViewCard title="Recursos Ambientales" link="/articulos" icon="Articulo.png" />
       <ViewCard title="Hábitos" link="/habitos" icon="habitos.png" />
       <ViewCard title="Eventos" link="/" icon="Eventos.png" />
       <ViewCard title="Entretenimiento" link="/" icon="Entretenimiento.png" />

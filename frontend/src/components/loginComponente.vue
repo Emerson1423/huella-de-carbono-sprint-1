@@ -1,4 +1,5 @@
 <template> 
+<NavComponente></NavComponente>
   
   <div class="login-page">  
   <div class="caja">
@@ -57,9 +58,14 @@
 
 <script>
 import axios from 'axios';
+import NavComponente from '@/components/NavComponente.vue';
 
 
 export default {
+  components:{
+    NavComponente
+
+  },
 
   data() {
     return {
@@ -144,6 +150,9 @@ export default {
   flex-direction: column;
   align-items: stretch;
   font-family:  'Poppins', sans-serif;
+}
+.caja{
+  padding-top: 100px;
 }
 h1 {
   text-align: center;

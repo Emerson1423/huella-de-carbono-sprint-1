@@ -539,6 +539,7 @@ export default {
 }
 .contenido-habitos{
   margin-top: 100px;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Imagen destacada */

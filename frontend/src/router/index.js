@@ -33,13 +33,13 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/components/loginComponente.vue'),
+    component: () => import('../views/loginviews.vue'),
     meta: { requiresAuth: false }
   },
   {
     path: '/registro',
     name: 'registro',
-    component: () => import('@/components/registroComponente.vue'),
+    component: () => import('../views/registro-view.vue'),
     meta: { requiresAuth: false }
   },
 

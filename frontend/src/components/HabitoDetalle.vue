@@ -507,6 +507,7 @@ methods: {
   transition: max-height 0.4s ease, padding 0.3s ease;
   background: #f9f9f9;
   padding: 0 1rem; /* padding horizontal fijo */
+  list-style-type: none;
 }
 
 /* Cuando pasas el puntero, se despliega */

@@ -1,7 +1,9 @@
 <template>
 
+
   <div class="register-page"> 
     <div class="caja">
+
       <form @submit.prevent="handleRegister" class="register-form">
         <h1>Registrarte</h1>
         
@@ -55,10 +57,12 @@
       </form>
     </div>
   </div>
+
 </template>
 
 <script>
 import axios from 'axios';
+
 
 export default {
 
@@ -136,7 +140,7 @@ export default {
 
 .register-page {
   position:fixed;
-  min-height: 100vh;
+
   top: 0;
   left: 0;
   right: 0;
@@ -162,6 +166,9 @@ export default {
   flex-direction: column;
   align-items: stretch;
   font-family: Poppins, sans-serif;
+}
+.caja{
+padding-top: 100px;
 }
 
 

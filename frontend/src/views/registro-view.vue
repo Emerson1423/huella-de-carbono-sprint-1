@@ -1,14 +1,23 @@
 <template>
+
+<NavComponente></NavComponente>
+
 <registroComponente></registroComponente>
+
+
 </template>
     
 <script>
 
 import RegistroComponente from '../components/registroComponente.vue';
+import NavComponente from '../components/NavComponente.vue';
+
 export default {
-    name: 'app',
+    
     components: {
-        RegistroComponente // Registra el componente aquí
+        RegistroComponente,
+        NavComponente// Registra el componente aquí
+       
     },
 }
 </script>
