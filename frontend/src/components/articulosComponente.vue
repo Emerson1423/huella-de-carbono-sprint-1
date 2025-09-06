@@ -1,6 +1,8 @@
 <template>
   <div class="contenedor-tarjetas">
     <h1 class="titulo-principal">Artículos Ambientales</h1>
+       
+
     
     <article 
       v-for="(tarjeta, index) in tarjetas" 
@@ -109,13 +111,20 @@ export default {
   font-family: 'Poppins', sans-serif;
   position: relative;
 }
-
-.titulo-principal {
-  color: #2c3e50;
+.titulo-principal{
   text-align: center;
-  margin-bottom: 2.5rem;
-  font-size: 2rem;
+  margin-bottom: 30px;
 }
+
+.titulo-principal h1{
+  font-size: 2rem;
+  font-weight: bold;
+  color: #222;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
 
 .tarjeta {
   display: flex;

@@ -1,6 +1,6 @@
 <template>
-  <NavComponente></NavComponente>
   <div class="contenido-habitos">
+
     <h1 class="title-habito">
       Hábitos Ecológicos
     </h1>
@@ -42,14 +42,14 @@
 
 <script>
 import HabitoDetalle from './HabitoDetalle.vue';
-import NavComponente from './NavComponente.vue';
+
 
 
 export default {
   name: 'HabitosComponente',
   components: {
-    HabitoDetalle,
-    NavComponente
+    HabitoDetalle
+
   },
   
   data() {
@@ -530,11 +530,11 @@ export default {
 
 <style scoped>
 /* Título principal */
-.title-habito {
-  font-size: 2rem;
+.title-habito  {
+  font-size: 4rem;
   text-align: center; 
   margin: 2rem 0 1.5rem 0;
-  color: #2c3e50;
+  color: #222;
   letter-spacing: 0.5px;
 }
 .contenido-habitos{

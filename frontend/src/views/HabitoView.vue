@@ -1,4 +1,6 @@
 <template>
+  <NavComponente></NavComponente>
+  <br>
   <div>
     <HabitosComponente />
   </div>
@@ -6,10 +8,12 @@
 
 <script>
 import HabitosComponente from '../components/HabitosComponente.vue';
+import NavComponente from '@/components/NavComponente.vue';
 export default {
   name: 'HabitosView',
   components: {
-    HabitosComponente
+    HabitosComponente,
+    NavComponente
   }
 }
 </script>

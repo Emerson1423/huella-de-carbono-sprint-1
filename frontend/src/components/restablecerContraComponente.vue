@@ -185,7 +185,7 @@ button:disabled {
   margin-top: 10px;
 }
 .volver a {
-  color: #8BC34A;
+  color: #101707;
   text-decoration: none;
 }
 .volver a:hover {
@@ -241,7 +241,7 @@ button:disabled {
   position: relative;
   padding-left: 20px;
   margin-bottom: 3px;
-  color: #777;
+  color: #0a210b;
 }
 
 .requirements li:before {

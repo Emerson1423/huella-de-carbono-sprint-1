@@ -97,8 +97,10 @@
       {{ errors.reciclaje }}
     </div>
 
-    <button @click="calcularHuella" class="calcular-btn">Calcular</button>
+    
   </div>
+  
+  <button @click="calcularHuella" class="calcular-btn">Calcular</button>
 
   
 </template>
@@ -282,6 +284,7 @@ export default {
 </script>
 
 <style scoped>
+
 .error-message {
   color: #ff4444;
   font-size: 0.9em;
@@ -301,12 +304,12 @@ export default {
 .calculoT{
   text-align: center;
   margin-bottom: 30px;
-  color: #333;
-    font-family: 'Poppins', sans-serif;
+  color: #222;
+  font-family: 'Poppins', sans-serif;
 
 }
 .carbon-footprint-form {
-  background-color: #8bc34a87;
+  background-color: #8bc34a36;
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -317,6 +320,7 @@ export default {
 .form-group {
   margin-bottom: 20px;
     font-family: 'Poppins', sans-serif;
+    text-align: center;
 }
 
 label {
@@ -328,6 +332,8 @@ label {
 .slider {
   width: 100%;
   margin: 10px 0;
+
+
 }
 
 select {
@@ -335,6 +341,7 @@ select {
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  background-color: #80D09B;
 }
 
 input[type="radio"] {
@@ -389,9 +396,11 @@ input[type="radio"] {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 20px;
-  width: 100%;
+  margin: 20px auto; 
+  width: 200px;
+  text-align: center;
   transition: background-color 0.3s;
+  display: block; 
 }
 
 .calcular-btn:hover {

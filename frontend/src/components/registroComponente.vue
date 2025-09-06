@@ -281,7 +281,7 @@ button.google:hover {
   position: relative;
   padding-left: 20px;
   margin-bottom: 3px;
-  color: #777;
+  color: #152516;
 }
 
 .requirements li:before {

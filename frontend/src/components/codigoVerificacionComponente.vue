@@ -147,13 +147,24 @@ export default {
 
 <style scoped>
 .codigo-bg {
+  position: fixed;
   min-height: 100vh;
   background-image: url("@/assets/img/fondoS3.png");
+  background-size: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
 }
 .codigo-box {
+  font-family: 'Poppins', sans-serif;
   background: #fff;
   padding: 35px 30px 25px 30px;
   border-radius: 12px;
@@ -222,6 +233,17 @@ button:disabled {
   cursor: pointer;
 }
 .reenviar a:hover {
+  text-decoration: underline;
+}
+.volver {
+  text-align: center;
+  margin-top: 10px;
+}
+.volver a {
+  color: #101707;
+  text-decoration: none;
+}
+.volver a:hover {
   text-decoration: underline;
 }
 </style>

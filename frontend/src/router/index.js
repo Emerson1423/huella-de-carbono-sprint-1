@@ -87,7 +87,7 @@ const routes = [
    {
     path: '/habitos',
     name: 'Habitos',
-    component: () => import('@/components/HabitosComponente.vue'),
+    component: () => import('../views/HabitoView.vue'),
     meta: { requiresAuth: true }
   },
 
