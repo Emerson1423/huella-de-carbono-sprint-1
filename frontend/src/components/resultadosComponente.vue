@@ -205,7 +205,7 @@ async guardarEnHistorial() {
   background: #f8fafc;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  padding: 32px 24px;
+  padding: 80px 24px;
   font-family: 'Poppins',  sans-serif;
 }
 

@@ -21,13 +21,13 @@ const routes = [
   {
     path: '/resultados',
     name: 'resultados',
-    component: () => import('@/components/resultadosComponente.vue'),
+    component: () => import('../views/historial.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/historial',
     name: 'historial',
-    component: () => import('@/components/historialComponente.vue'),
+    component: () => import('../views/historialview.vue'),
     meta: { requiresAuth: true } // Añadido para proteger historial
   },
   {
