@@ -119,7 +119,8 @@ async handleSubmit() {
   } finally {
     this.loading = false;
   }
-},
+}
+  }
 };
 </script>
 

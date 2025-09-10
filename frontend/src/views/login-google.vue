@@ -1,24 +1,41 @@
 <template>
-  <div>
-    <p>Iniciando sesión con Google...</p>
+  <div class="loading">
+    <p>inicia sesion con Google...</p>
   </div>
 </template>
 
 <script>
 export default {
+  name: "LoginGoogle",
   mounted() {
-    // Obtiene el token de la URL
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get('token');
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+
     if (token) {
-      // Guarda el token en localStorage
-      localStorage.setItem('token', token);
-      // Redirige a la página principal
-      this.$router.push('/');
+      try {
+        // Decodificar el token para extraer datos del usuario
+        const payload = JSON.parse(atob(token.split(".")[1]));
+
+        // Guardar en localStorage
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify({
+          id: payload.id,
+          usuario: payload.usuario,
+          correo: payload.correo
+        }));
+
+        // Emitir evento para que tu NavBar se actualice
+        window.dispatchEvent(new Event("userLoggedIn"));
+
+        // Redirigir al inicio
+        this.$router.push("/");
+      } catch (error) {
+        console.error("Error procesando token:", error);
+        this.$router.push("/login");
+      }
     } else {
-      // Si no hay token, redirige al login
-      this.$router.push('/login');
+      this.$router.push("/login");
     }
   }
-}
+};
 </script>

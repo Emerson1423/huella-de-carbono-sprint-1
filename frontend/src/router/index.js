@@ -43,13 +43,12 @@ const routes = [
     meta: { requiresAuth: false }
   },
 
-  {
-    path: '/login-google',
-    name: 'LoginGoogle',
-    component: () => import('../views/login-google.vue')
-  },
-  
-    {
+{
+  path: '/login-google',
+  name: 'LoginGoogle',
+  component: () => import('../views/login-google.vue'),
+},
+{
     path: '/recuperar-contra',
     name: 'RecuperarContra',
     component: () => import('../views/recuperar-contra.vue')
