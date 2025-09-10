@@ -1,6 +1,6 @@
 <template>
 
-<header>
+<!---<header>
   <div>
     <button @click="showLogoutModal = true" class="logout-btn">
       <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
@@ -17,12 +17,12 @@
     </div>
   </div>
 
-</header>  
+</header>  -->
 
   <div class="historial-page">
     <div class="header">
       <h1>📚 Tu Historial Completo</h1>
-      <button @click="irACalculadora" class="btn-action">➕ Nueva Calculación</button>
+      <button @click="irACalculadora" class="btn-action">➕ Nuevo Cálculo</button>
     </div>
 
     <!-- Filtros -->
@@ -283,7 +283,7 @@ export default {
 .historial-page {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 90px;
   font-family: 'Poppins', sans-serif;
 }
 
