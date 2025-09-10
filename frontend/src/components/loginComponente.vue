@@ -76,45 +76,50 @@ export default {
     };
   },
   methods: {
-    async handleSubmit() {
-      this.loading = true;
-      this.error = '';
+    // En el método handleSubmit(), reemplaza esta parte:
 
-      try {
-        const response = await axios.post(
-          'http://localhost:3000/api/login',
-          {
-            usuario: this.usuario,
-            contraseña: this.contraseña,
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }
-        );
+async handleSubmit() {
+  this.loading = true;
+  this.error = '';
 
-        if (!response.data.token) {
-          throw new Error('No se recibió token del servidor');
+  try {
+    const response = await axios.post(
+      'http://localhost:3000/api/login',
+      {
+        usuario: this.usuario,
+        contraseña: this.contraseña,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
         }
-
-        // Guardar token y datos de usuario
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-
-        // Redirigir a la página principal después de login
-        this.$router.push('/huella');
-        
-      } catch (err) {
-        console.error('Error en login:', err);
-        this.error = err.response?.data?.error || 
-                    err.message || 
-                    'Error al iniciar sesión';
-      } finally {
-        this.loading = false;
       }
-    },
-  },
+    );
+
+    if (!response.data.token) {
+      throw new Error('No se recibió token del servidor');
+    }
+
+    // Guardar token y datos de usuario
+    localStorage.setItem('token', response.data.token);
+    localStorage.setItem('user', JSON.stringify(response.data.user));
+
+    // ✅ AGREGAR ESTAS DOS LÍNEAS:
+    // 1. Disparar evento para actualizar navbar
+    window.dispatchEvent(new Event('userLoggedIn'));
+    
+    // 2. Redirigir al INICIO en lugar de huella
+    this.$router.push('/');
+    
+  } catch (err) {
+    console.error('Error en login:', err);
+    this.error = err.response?.data?.error || 
+                err.message || 
+                'Error al iniciar sesión';
+  } finally {
+    this.loading = false;
+  }
+},
 };
 </script>
 
