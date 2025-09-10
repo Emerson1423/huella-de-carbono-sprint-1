@@ -601,7 +601,8 @@ export default {
 .card-img {
   width: 100%;
   max-width: 400px;
-  height: auto;
+  height: 180px;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
